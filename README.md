@@ -1,15 +1,20 @@
 # hutils
 Python project to install and configure Apache Hadoop 2.6.0 on ubuntu cluster 
 
-Add Hosts to Hostsfile
+Pre-Installation
+-----------------
+1. You have to add new user called "hadoop" on all nodes, or any username but the name has to be the same on cluster's nodes.
+2. Install a passwordless ssh among cluster's nodes.
+3. Add Hosts to Hostsfile, Hosts file contains all hosts of your cluster as shown below 
 
-Hosts file contains all hosts of your cluster as shown below 
-    
-    namenode
-    slavenode1  
-    slavenode2
-    slavenode3
-    .....
+        namenode
+        slavenode1  
+        slavenode2
+        slavenode3
+        .....
+
+Installation:
+-------------
 
 First you have to install Apache Hadoop on slaves before master node, for each slave node run the following command line:  
 
