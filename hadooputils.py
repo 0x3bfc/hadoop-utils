@@ -40,7 +40,7 @@ def __install_java(installed=False):
 		try:
 			if 'ubuntu' not in __execute('cat /etc/*-release | grep DISTRIB_ID='):
 				print __execute('sudo yum update')
-				print __execute('sudo yum install java-1.7.0-openjdk java-1.7.0-openjdk-devel')
+				print __execute('sudo yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel')
 		except:
 			print "ERROR: Try to install OpenJDK manually"
 			sys.exit(0)
