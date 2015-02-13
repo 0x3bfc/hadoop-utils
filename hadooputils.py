@@ -37,6 +37,13 @@ def __install_java(installed=False):
 			print __execute("sudo apt-get --assume-yes install openjdk-7-jdk")
 		print "INFO -- Done"
 	except:
+		try:
+			if 'ubuntu' not in __execute('cat /etc/*-release | grep DISTRIB_ID='):
+				print __execute('sudo yum update')
+				print __execute('sudo yum install java-1.7.0-openjdk java-1.7.0-openjdk-devel')
+		except:
+			print "ERROR: Try to install OpenJDK manually"
+			sys.exit(0)
 		print "ERROR: Unable to install OpenJDK"
 		sys.exit(0)
 		
@@ -186,7 +193,7 @@ def check_hostname(node):
 def install_master(hostsFile, hosts=[]):
 	with open(hostsFile, 'r') as hosts_obj:
 		hosts = hosts_obj.read().split()
-	if len(hosts) > 1:
+	if len(hosts) >= 1:
 		return setup_namenode(hosts[0], hosts[1:])
 	else:
 		print "ERROR: add slaves to the hosts file, only master node exists"
